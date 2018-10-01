@@ -13,20 +13,21 @@ services:
             connector: postgres
             host: host.docker.internal
             port: 5432
-            user: prisma
-            password: prisma
-            migrations: true
-            database: prisma
+            user: postgres
+            password: postgres
+            database: dellstore
             schema: public
             migrations: false
             ssl: false
-
+  
   postgres:
-    image: postgres:10.5
+    image: aa8y/postgres-dataset:dellstore
     restart: always
+    ports:
+    - "5432:5432"
     environment:
-      POSTGRES_USER: prisma
-      POSTGRES_PASSWORD: prisma
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
       - postgres:/var/lib/postgresql/data
 volumes:
